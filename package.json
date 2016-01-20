@@ -1,0 +1,47 @@
+{
+  "name": "angular2-testing",
+  "version": "1.0.0",
+  "description": "Angular 2 testing with Karma, Jasmine and Istanbul",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -p src -w",
+    "build": "rm -rf dist && tsc -p src",
+    "pretest": "npm run build",
+    "test": "karma start karma.conf.js",
+    "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage -t html",
+    "coverage": "http-server -c-1 -o -p 9875 ./coverage"
+  },
+  "author": "Raul Jimenez <elecash@gmail.com> (http://twofuckingedevelopers.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "angular2": "2.0.0-beta.1",
+    "es6-shim": "0.34.1",
+    "rxjs": "5.0.0-beta.1"
+  },
+  "devDependencies": {
+    "http-server": "0.8.5",
+    "jasmine-core": "2.4.1",
+    "karma": "0.13.19",
+    "karma-chrome-launcher": "0.2.2",
+    "karma-jasmine": "0.3.6",
+    "remap-istanbul": "0.5.1",
+    "systemjs": "0.19.17",
+    "typescript": "1.7.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elecash/angular2-testing.git"
+  },
+  "keywords": [
+    "angular2",
+    "karma",
+    "jasmine",
+    "istanbul",
+    "unit-testing",
+    "typescript"
+  ],
+  "bugs": {
+    "url": "https://github.com/Elecash/angular2-testing/issues"
+  },
+  "homepage": "https://github.com/Elecash/angular2-testing#readme"
+}
