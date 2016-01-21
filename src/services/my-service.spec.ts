@@ -2,9 +2,17 @@ import {it, describe, expect, beforeEach, inject} from 'angular2/testing';
 import {MyService} from "./my-service";
 
 describe('MyList Component', () => {
-    it('Should return a list of items', () => {
-        var items = MyService.load();
+    let service:MyService = new MyService();
 
-        expect(items).toEqual(['one', 'two', 'three', 'caramba']);
+    it('Should return a list of items', () => {
+        var items = service.getAnimals(4);
+
+        expect(items).toEqual(['cat', 'dog', 'elephant', 'lion']);
+    });
+
+    it('Should get all animals available', () => {
+        var items = service.getAnimals(100);
+
+        expect(items).toEqual(['cat', 'dog', 'elephant', 'lion', 'duck', 'pidgeon', 'turtle']);
     });
 });

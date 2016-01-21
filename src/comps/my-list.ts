@@ -4,7 +4,6 @@ import {MyPipe} from "../pipes/my-pipe";
 
 @Component({
     selector: 'my-list',
-    bindings: [MyService],
     pipes: [MyPipe],
     template: `<ul><li *ngFor="#item of items">{{ item | capitalizeWords }}</li></ul>`,
     styles: [`
@@ -18,12 +17,13 @@ import {MyPipe} from "../pipes/my-pipe";
 })
 export class MyList implements OnInit {
     items:Array<string>;
+    service:MyService;
 
-    constructor() {
-        this.items = MyService.load();
+    constructor(service:MyService) {
+        this.service = service;
     }
 
     ngOnInit() {
-        this.items.pop();
+        this.items = this.service.getAnimals(5);
     }
 }
