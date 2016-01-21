@@ -1,8 +1,12 @@
 import {Component, OnInit} from 'angular2/core';
+import {MyService} from "../services/my-service";
+import {MyPipe} from "../pipes/my-pipe";
 
 @Component({
     selector: 'my-list',
-    template: `<ul><li *ngFor=""></li></ul>`,
+    bindings: [MyService],
+    pipes: [MyPipe],
+    template: `<ul><li *ngFor="#item of items">{{ item | capitalizeWords }}</li></ul>`,
     styles: [`
         :host {
             font-family: 'Arial';
@@ -13,11 +17,13 @@ import {Component, OnInit} from 'angular2/core';
     `]
 })
 export class MyList implements OnInit {
-    constructor() {
+    items:Array<string>;
 
+    constructor() {
+        this.items = MyService.load();
     }
 
     ngOnInit() {
-
+        this.items.pop();
     }
 }
