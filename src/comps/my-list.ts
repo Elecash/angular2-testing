@@ -4,6 +4,7 @@ import {MyPipe} from "../pipes/my-pipe";
 
 @Component({
     selector: 'my-list',
+    bindings: [MyService],
     pipes: [MyPipe],
     template: `<ul><li *ngFor="#item of items">{{ item | capitalizeWords }}</li></ul>`,
     styles: [`
