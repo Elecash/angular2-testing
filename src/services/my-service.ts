@@ -5,10 +5,10 @@ export class MyService {
     animals:Array<string>;
 
     constructor() {
-        this.animals = ['cat', 'dog', 'elephant', 'lion', 'duck', 'pidgeon', 'turtle'];
+        this.animals = ['golden retriever', 'french bulldog', 'german shepherd', 'alaskan husky', 'jack russel terrier', 'boxer', 'chow chow', 'pug', 'akita', 'corgi', 'labrador'];
     }
 
-    getAnimals(count:number) {
+    getDogs(count:number) {
         var result = [];
 
         if (count > this.animals.length) count = this.animals.length;

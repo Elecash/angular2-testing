@@ -4,8 +4,7 @@
   "description": "Angular 2 testing with Karma, Jasmine and Istanbul",
   "main": "index.js",
   "scripts": {
-    "watch": "tsc -p src -w",
-    "start": "http-server -c-1 .",
+    "start": "http-server -c-1 -o -p 8875 .",
     "build": "rm -rf dist && tsc -p src",
     "pretest": "npm run build",
     "test": "karma start karma.conf.js",

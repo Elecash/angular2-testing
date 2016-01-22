@@ -1,16 +1,16 @@
 import {it, describe, expect, beforeEach, inject} from 'angular2/testing';
 import {MyPipe} from "./my-pipe";
 
-describe('MyPipe Pipe', () => {
+describe('MyPipe Tests', () => {
     let pipe:MyPipe;
 
     beforeEach(() => {
         pipe = new MyPipe();
     });
 
-    it('Should get all medias on init', () => {
-        var result = pipe.transform('one two three', null);
+    it('Should capitalize all words in a string', () => {
+        var result = pipe.transform('golden retriever', null);
 
-        expect(result).toEqual('One Two Three');
+        expect(result).toEqual('Golden Retriever');
     });
 });

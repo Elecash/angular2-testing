@@ -25,6 +25,6 @@ export class MyList implements OnInit {
     }
 
     ngOnInit() {
-        this.items = this.service.getAnimals(5);
+        this.items = this.service.getDogs(5);
     }
 }
