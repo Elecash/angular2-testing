@@ -1,6 +1,5 @@
-import {PipeTransform, Pipe, Injectable} from 'angular2/core';
+import {PipeTransform, Pipe} from 'angular2/core';
 
-@Injectable()
 @Pipe({name: 'capitalizeWords'})
 export class MyPipe implements PipeTransform {
     constructor() {
