@@ -1,3 +1,5 @@
+///<reference path="../../node_modules/angular2/typings/browser.d.ts"/>
+
 import {Component, OnInit} from 'angular2/core';
 import {MyService} from "../services/my-service";
 import {MyPipe} from "../pipes/my-pipe";
