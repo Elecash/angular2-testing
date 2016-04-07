@@ -1,21 +1,21 @@
 ///<reference path="../../node_modules/angular2/typings/browser.d.ts"/>
 
-export class MyService {
-    animals:Array<string>;
+import {Http} from "angular2/http";
+import {Observable} from "rxjs/Observable";
+import {Inject} from "angular2/core";
 
-    constructor() {
-        this.animals = ['golden retriever', 'french bulldog', 'german shepherd', 'alaskan husky', 'jack russel terrier', 'boxer', 'chow chow', 'pug', 'akita', 'corgi', 'labrador'];
+export class MyService {
+    http:Http;
+
+    constructor(@Inject(Http) http:Http) {
+        this.http = http;
     }
 
-    getDogs(count:number) {
-        var result = [];
+    getUsers(since:number):Observable<any> {
+        var url:string = 'https://api.github.com/users';
 
-        if (count > this.animals.length) count = this.animals.length;
+        if (since) url = 'https://api.github.com/users?since=' + since;
 
-        for (var i=0; i<count; i++) {
-            result.push(this.animals[i]);
-        }
-
-        return result;
+        return this.http.get(url).map(response => response.json());
     }
 }

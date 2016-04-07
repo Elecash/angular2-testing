@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
+import {HTTP_PROVIDERS} from 'angular2/http';
 import {MyList} from "./comps/my-list";
 
 @Component({
@@ -13,4 +14,6 @@ class VgDemo {
     }
 }
 
-bootstrap(VgDemo);
+bootstrap(VgDemo, [
+    HTTP_PROVIDERS
+]);

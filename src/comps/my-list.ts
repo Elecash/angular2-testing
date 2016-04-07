@@ -1,14 +1,16 @@
 ///<reference path="../../node_modules/angular2/typings/browser.d.ts"/>
 
 import {Component, OnInit} from 'angular2/core';
-import {MyService} from "../services/my-service";
-import {MyPipe} from "../pipes/my-pipe";
+import {MyService} from '../services/my-service';
+import {MyPipe} from '../pipes/my-pipe';
+import {GithubUser} from '../services/github-user';
+import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'my-list',
     bindings: [MyService],
     pipes: [MyPipe],
-    template: `<ul><li *ngFor="#item of items">{{ item | capitalizeWords }}</li></ul>`,
+    template: `<ul><li *ngFor="#user of users">{{ user.login | capitalizeWords }}</li></ul>`,
     styles: [`
         :host {
             font-family: 'Arial';
@@ -19,7 +21,7 @@ import {MyPipe} from "../pipes/my-pipe";
     `]
 })
 export class MyList implements OnInit {
-    items:Array<string>;
+    users:Array<GithubUser>;
     service:MyService;
 
     constructor(service:MyService) {
@@ -27,6 +29,10 @@ export class MyList implements OnInit {
     }
 
     ngOnInit() {
-        this.items = this.service.getDogs(5);
+        this.service
+            .getUsers(5)
+            .subscribe(
+                users => this.users = users
+            );
     }
 }
